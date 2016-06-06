@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:05:34 GMT
+Content-Type: application/json
+Content-Length: 260
+Connection: keep-alive
+
+{
+  "msg_id" : "47840912-ab09-472b-ae54-e828923e631d",
+  "_text" : "can you please turn off the function",
+  "outcomes" : [ {
+    "_text" : "can you please turn off the function",
+    "confidence" : 0.435,
+    "intent" : "Command",
+    "entities" : { }
+  } ]
+}

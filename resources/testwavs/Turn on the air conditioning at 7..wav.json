@@ -1,0 +1,23 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:15:08 GMT
+Content-Type: application/json
+Content-Length: 296
+Connection: keep-alive
+
+{
+  "msg_id" : "5050ebc6-9eef-47e7-ab8f-28bdb7f19471",
+  "_text" : "set condition not so",
+  "outcomes" : [ {
+    "_text" : "set condition not so",
+    "confidence" : 0.288,
+    "intent" : "Query",
+    "entities" : {
+      "Medication" : [ {
+        "value" : "medication"
+      } ]
+    }
+  } ]
+}

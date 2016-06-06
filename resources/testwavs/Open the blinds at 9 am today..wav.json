@@ -1,0 +1,29 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:12:04 GMT
+Content-Type: application/json
+Content-Length: 449
+Connection: keep-alive
+
+{
+  "msg_id" : "ed1f52d2-4d84-43f0-8745-d508581fe3cf",
+  "_text" : "open the blinds at nine am today",
+  "outcomes" : [ {
+    "_text" : "open the blinds at nine am today",
+    "confidence" : 0.739,
+    "intent" : "Query",
+    "entities" : {
+      "number" : [ {
+        "type" : "value",
+        "value" : 9
+      } ],
+      "Time_Reference" : [ {
+        "entities" : { },
+        "type" : "value",
+        "value" : "today"
+      } ]
+    }
+  } ]
+}

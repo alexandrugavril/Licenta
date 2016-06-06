@@ -1,0 +1,28 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:11:09 GMT
+Content-Type: application/json
+Content-Length: 407
+Connection: keep-alive
+
+{
+  "msg_id" : "fafdca8c-3ad4-4c2a-87fd-2bb62e852101",
+  "_text" : "i'm not sure there is no",
+  "outcomes" : [ {
+    "_text" : "i'm not sure there is no",
+    "confidence" : 0.433,
+    "intent" : "Data",
+    "entities" : {
+      "Time_Reference" : [ {
+        "type" : "value",
+        "value" : "now"
+      } ],
+      "secondary" : [ {
+        "type" : "value",
+        "value" : 0
+      } ]
+    }
+  } ]
+}

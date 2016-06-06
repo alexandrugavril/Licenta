@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:07:14 GMT
+Content-Type: application/json
+Content-Length: 240
+Connection: keep-alive
+
+{
+  "msg_id" : "1cccee90-1edc-432f-bd88-567a3c6af0e5",
+  "_text" : "close the blinds in this if",
+  "outcomes" : [ {
+    "_text" : "close the blinds in this if",
+    "confidence" : 0.636,
+    "intent" : "Query",
+    "entities" : { }
+  } ]
+}

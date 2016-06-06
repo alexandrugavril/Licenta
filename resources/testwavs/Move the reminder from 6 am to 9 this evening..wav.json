@@ -1,0 +1,24 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:10:49 GMT
+Content-Type: application/json
+Content-Length: 312
+Connection: keep-alive
+
+{
+  "msg_id" : "6d3bd757-7a4a-4dd9-a6e4-26a5de730128",
+  "_text" : "who's minus six in the",
+  "outcomes" : [ {
+    "_text" : "who's minus six in the",
+    "confidence" : 0.621,
+    "intent" : "Query",
+    "entities" : {
+      "number" : [ {
+        "type" : "value",
+        "value" : -6
+      } ]
+    }
+  } ]
+}

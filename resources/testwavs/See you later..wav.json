@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:14:27 GMT
+Content-Type: application/json
+Content-Length: 212
+Connection: keep-alive
+
+{
+  "msg_id" : "3b79ea8a-3aa5-479e-9dc1-926ae8650f4a",
+  "_text" : "see you later",
+  "outcomes" : [ {
+    "_text" : "see you later",
+    "confidence" : 0.487,
+    "intent" : "Query",
+    "entities" : { }
+  } ]
+}

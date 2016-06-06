@@ -1,0 +1,24 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:11:51 GMT
+Content-Type: application/json
+Content-Length: 291
+Connection: keep-alive
+
+{
+  "msg_id" : "258bbdc0-e920-4c69-a0e6-63525a80644f",
+  "_text" : "no thank you",
+  "outcomes" : [ {
+    "_text" : "no thank you",
+    "confidence" : 0.354,
+    "intent" : "Query",
+    "entities" : {
+      "number" : [ {
+        "type" : "value",
+        "value" : 0
+      } ]
+    }
+  } ]
+}

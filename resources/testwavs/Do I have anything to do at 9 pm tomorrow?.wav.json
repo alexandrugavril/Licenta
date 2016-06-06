@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:08:05 GMT
+Content-Type: application/json
+Content-Length: 260
+Connection: keep-alive
+
+{
+  "msg_id" : "2f2aba3c-a92c-4e22-970c-a720a28242a1",
+  "_text" : "do i have anything to do right to more",
+  "outcomes" : [ {
+    "_text" : "do i have anything to do right to more",
+    "confidence" : 0.6,
+    "intent" : "Query",
+    "entities" : { }
+  } ]
+}

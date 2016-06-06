@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:10:26 GMT
+Content-Type: application/json
+Content-Length: 238
+Connection: keep-alive
+
+{
+  "msg_id" : "56e15893-7e41-4f3e-ac79-3e54469f14b2",
+  "_text" : "i have stopped dispensing",
+  "outcomes" : [ {
+    "_text" : "i have stopped dispensing",
+    "confidence" : 0.405,
+    "intent" : "Command",
+    "entities" : { }
+  } ]
+}

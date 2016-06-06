@@ -1,0 +1,24 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:11:26 GMT
+Content-Type: application/json
+Content-Length: 343
+Connection: keep-alive
+
+{
+  "msg_id" : "a76aec3d-958d-4ad0-befb-35b3d84da2da",
+  "_text" : "it's raining like this and is on",
+  "outcomes" : [ {
+    "_text" : "it's raining like this and is on",
+    "confidence" : 0.687,
+    "intent" : "Query",
+    "entities" : {
+      "Time_Reference" : [ {
+        "type" : "value",
+        "value" : "now"
+      } ]
+    }
+  } ]
+}

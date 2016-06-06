@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:15:15 GMT
+Content-Type: application/json
+Content-Length: 218
+Connection: keep-alive
+
+{
+  "msg_id" : "d16d5b85-aa00-4b75-952f-c25dd484dfc9",
+  "_text" : "what did you say",
+  "outcomes" : [ {
+    "_text" : "what did you say",
+    "confidence" : 0.753,
+    "intent" : "Query",
+    "entities" : { }
+  } ]
+}

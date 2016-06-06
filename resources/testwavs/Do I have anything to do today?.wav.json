@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:08:10 GMT
+Content-Type: application/json
+Content-Length: 240
+Connection: keep-alive
+
+{
+  "msg_id" : "ceb67452-66c5-4426-94c0-6749d0fd30c2",
+  "_text" : "do i have anything to do to",
+  "outcomes" : [ {
+    "_text" : "do i have anything to do to",
+    "confidence" : 0.554,
+    "intent" : "Query",
+    "entities" : { }
+  } ]
+}

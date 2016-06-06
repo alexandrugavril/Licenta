@@ -1,0 +1,23 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:14:57 GMT
+Content-Type: application/json
+Content-Length: 266
+Connection: keep-alive
+
+{
+  "msg_id" : "b73f5084-aad8-446c-8c3f-a963dc24a3d2",
+  "_text" : "are there",
+  "outcomes" : [ {
+    "_text" : "are there",
+    "confidence" : 0.697,
+    "intent" : "Command",
+    "entities" : {
+      "Action" : [ {
+        "value" : "move"
+      } ]
+    }
+  } ]
+}

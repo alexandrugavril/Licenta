@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:11:54 GMT
+Content-Type: application/json
+Content-Length: 192
+Connection: keep-alive
+
+{
+  "msg_id" : "294110e9-79f0-427c-baa2-a8f6558cecf7",
+  "_text" : "no",
+  "outcomes" : [ {
+    "_text" : "no",
+    "confidence" : 0.227,
+    "intent" : "UNKNOWN",
+    "entities" : { }
+  } ]
+}

@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:05:06 GMT
+Content-Type: application/json
+Content-Length: 203
+Connection: keep-alive
+
+{
+  "msg_id" : "ee79f161-9ea1-48b4-bd33-741b4f1b998b",
+  "_text" : "film with",
+  "outcomes" : [ {
+    "_text" : "film with",
+    "confidence" : 0.336,
+    "intent" : "Data",
+    "entities" : { }
+  } ]
+}

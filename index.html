@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>AmI</title>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="AmI Helper" name="description">
+    <meta content="BdgPixel" name="author">
+    <!--Fav-->
+    <link href="images/favicon.ico" rel="shortcut icon">
+    
+    <!--styles-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/owl.carousel.css" rel="stylesheet">
+    <link href="css/owl.theme.css" rel="stylesheet">
+    <link href="css/magnific-popup.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    
+    <!--fonts google-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <script src="js/speech.1.0.0.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="js/jquery-ui-draggable-collision.js"></script>
+    <script src="js/jquery-collision.min.js"></script>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+    <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
+    <script type="text/javascript" src="./js/canvasjs.min.js"></script>
+    <script type="text/javascript">
+      var client;
+      var request;
+
+      function useMic() {
+        return true;
+      }
+
+      function getMode() {
+        return Microsoft.ProjectOxford.SpeechRecognition.SpeechRecognitionMode.longDictation;
+      }
+
+      function getOxfordKey() {
+        return "c3cece936e95450eb95b7d18dd371bf9";
+      }
+
+      function getSecondaryOxfordKey() {
+        return "ab61d10498274872bd6c493bebdf153d";
+      }
+
+      function getLanguage() {
+        return "en-us";
+      }
+
+      function clearText() {
+        document.getElementById("output").value = "";
+      }
+
+      function setText(text) {
+        document.getElementById("output").value += text;
+      }
+
+      function getLuisConfig() {
+        var appid = "9e9c32b0-4496-48b5-9a0b-0342511e3d4c";
+        var subid = "310de3dce0964707bbe019b877553fed";
+        console.log("Called");
+
+        if (appid.length > 0 && subid.length > 0) {
+          console.log("LUIS?");
+          return { appid: appid, subid: subid };
+        }
+
+        return null;
+      }
+
+      function startTests() {
+        /*if (luisCfg) {
+          client = Microsoft.ProjectOxford.SpeechRecognition.SpeechRecognitionServiceFactory.createDataClientWithIntent(
+                  getLanguage(),
+                  getOxfordKey(),
+                  getSecondaryOxfordKey(),
+                  luisCfg.appid,
+                  luisCfg.subid);
+        } else {
+          client = Microsoft.ProjectOxford.SpeechRecognition.SpeechRecognitionServiceFactory.createDataClient(
+                  mode,
+                  getLanguage(),
+                  getOxfordKey(),
+                  getSecondaryOxfordKey());
+        }
+        request = new XMLHttpRequest();
+        request.open(
+                'GET',
+                (mode == Microsoft.ProjectOxford.SpeechRecognition.SpeechRecognitionMode.shortPhrase) ? "whatstheweatherlike.wav" : "batman.wav",
+                true);
+        request.responseType = 'arraybuffer';
+        request.onload = function () {
+          if (request.status !== 200) {
+            setText("unable to receive audio file");
+          } else {
+            client.sendAudio(request.response, request.response.length);
+          }
+        };
+
+        request.send();*/
+        fs.readdir();
+      }
+
+      function start() {
+        var mode = getMode();
+        var luisCfg = getLuisConfig();
+
+        clearText();
+
+        if (useMic()) {
+          if (luisCfg) {
+            client = Microsoft.ProjectOxford.SpeechRecognition.SpeechRecognitionServiceFactory.createMicrophoneClientWithIntent(
+                    getLanguage(),
+                    getOxfordKey(),
+                    getSecondaryOxfordKey(),
+                    luisCfg.appid,
+                    luisCfg.subid);
+          } else {
+            client = Microsoft.ProjectOxford.SpeechRecognition.SpeechRecognitionServiceFactory.createMicrophoneClient(
+                    mode,
+                    getLanguage(),
+                    getOxfordKey(),
+                    getSecondaryOxfordKey());
+          }
+          client.startMicAndRecognition();
+          console.log("Started?");
+          setTimeout(function () {
+            console.log("Ended?");
+            client.endMicAndRecognition();
+          }, 5000);
+        } else {
+          if (luisCfg) {
+            client = Microsoft.ProjectOxford.SpeechRecognition.SpeechRecognitionServiceFactory.createDataClientWithIntent(
+                    getLanguage(),
+                    getOxfordKey(),
+                    getSecondaryOxfordKey(),
+                    luisCfg.appid,
+                    luisCfg.subid);
+          } else {
+            client = Microsoft.ProjectOxford.SpeechRecognition.SpeechRecognitionServiceFactory.createDataClient(
+                    mode,
+                    getLanguage(),
+                    getOxfordKey(),
+                    getSecondaryOxfordKey());
+          }
+          request = new XMLHttpRequest();
+          request.open(
+                  'GET',
+                  (mode == Microsoft.ProjectOxford.SpeechRecognition.SpeechRecognitionMode.shortPhrase) ? "whatstheweatherlike.wav" : "batman.wav",
+                  true);
+          request.responseType = 'arraybuffer';
+          request.onload = function () {
+            if (request.status !== 200) {
+              setText("unable to receive audio file");
+            } else {
+              client.sendAudio(request.response, request.response.length);
+            }
+          };
+
+          request.send();
+        }
+
+        client.onPartialResponseReceived = function (response) {
+          console.log(response);
+          setText(response);
+        };
+
+        client.onFinalResponseReceived = function (response) {
+          console.log(response);
+
+
+
+          $.ajax({
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(response),
+            dataType: 'json',
+            processData: false,
+            type: 'POST',
+            url: '/message'
+          }).done(function(data) {
+            console.log(data);
+          });
+
+
+
+          console.log("EMMITED");
+        };
+
+        client.onIntentReceived = function (response) {
+          console.log(response);
+          var json = JSON.parse(response);
+          var intents = json['intents'];
+          var bestIntent = intents[0];
+          setText("#" + bestIntent['intent']);setText(': '); setText(json['query']);
+
+
+          socket.emit ('speechSend', response);
+          console.log("EMMITED");
+        };
+      }
+    </script>
+    <script type="text/javascript">
+      var dpsX = [];
+      var dpsY = [];
+      var chartX, chartY;
+      $('document').ready(function () {
+        chartX = new CanvasJS.Chart("chartContainerX",{
+          title :{
+            text: "X Coord"
+          },
+          data: [{
+            type: "line",
+            dataPoints: dpsX
+          }]
+        });
+        chartY = new CanvasJS.Chart("chartContainerY",{
+          title :{
+            text: "Y Coord"
+          },
+          data: [{
+            type: "line",
+            dataPoints: dpsY
+          }]
+        });
+      });
+
+      function pushX (point) {
+        dpsX.push({
+          y: point,
+          x: $.now()
+        });
+        var dataLength = 200;
+        if (dpsX.length > dataLength)
+        {
+          dpsX.shift();
+        }
+        chartX.render();
+      };
+      function pushY (point) {
+        dpsY.push({
+          y: point,
+          x: $.now()
+        });
+        var dataLength = 200;
+        if (dpsY.length > dataLength)
+        {
+          dpsY.shift();
+        }
+        chartY.render();
+      };
+
+      // generates first set of dataPoints
+    </script>
+    <script type="text/javascript">
+      /**
+       * Created by alex on 4/28/16.
+       */
+
+      function getPositions(box) {
+        var $box = $(box);
+        var pos = $box.offset();
+        var width = $box.width();
+        var height = $box.height();
+        return [ pos.left, pos.top, pos.left + width, pos.top + height];
+
+      }
+
+      function comparePositions(p1, p2) {
+        var xc = (p1[0]+p1[2])/2;
+        var yc = (p1[1]+p1[3])/2;
+
+        if(xc >= p2[0] && xc <= p2[2])
+          if(yc >= p2[1] && yc <= p2[3])
+           return true;
+        return false;
+      }
+      var matchedItems = [];
+      var matchedBox;
+
+      function clickIfCompare(){
+        if(matchedBox == 0){
+          console.log("MATCHED BOX 0 !");
+          return;
+        }
+        var pos = getPositions(matchedBox);
+        var evnt = matchedBox["onclick"];
+        var pos2 = getPositions($("#cursor"));
+        if(comparePositions(pos2,pos)){
+          if (typeof(evnt) == "function") {
+            console.log("CLICKED!");
+            evnt.call(matchedBox);
+          }
+        }
+        var index = matchedItems.indexOf(matchedBox);
+        if(index > -1){
+          matchedItems.splice(index, 1);
+          console.log("REMOVED BOX");
+          unload();
+        }
+        matchedBox = 0;
+
+      }
+
+      function checkCollisions(x){
+        var objs = $(".clickableObjects");
+        var pos2 = getPositions($("#cursor"));
+        if( Math.abs(pos2[0] - window.innerWidth) < 400 ){
+          console.log("SHOWING MENU!");
+          showMenu();
+        }
+        else{
+          hideMenu();
+        }
+        for(var i = 0 ; i < objs.length; i++){
+          var box = objs[i];
+          var pos = getPositions(box);
+          var match = comparePositions(pos2,pos);
+          var index = matchedItems.indexOf(box);
+          if (match && index == -1) {
+            matchedItems.push(box);
+            matchedBox = box;
+            console.log("ADDED BOX");
+            window.setTimeout(clickIfCompare, 2000);
+            load();
+          }
+          if(match == false && index != -1){
+            unload();
+          }
+        }
+
+      }
+
+      var initPos;
+      var pos;
+
+      var lastPos;
+
+
+      var iKWidth = 1600;
+      var ikHeight = 900;
+
+
+      var kWidth = 1500;
+      var kHeight = 1500;
+
+      var stabilizator = 1.5;
+      var initStab = 1.5;
+
+      var socket = io();
+      $('document').ready(function(){
+        document.getElementById('cursor').style.left = (window.innerWidth/2).toString() + "px";
+        document.getElementById('loadCirc').style.left = (-6 + (window.innerWidth/2)).toString() + "px";
+        document.getElementById('cursor').style.top = (window.innerHeight/2).toString() + "px";
+        document.getElementById('loadCirc').style.top = (-6 + (window.innerHeight/2)).toString() + "px";
+        unload();
+
+      });
+
+
+      function setY(coords) {
+        var screenHeight = window.innerHeight;
+        var yp = (screenHeight * coords.y) / (kHeight / 2);
+        document.getElementById('cursor').style.top = Math.min((Math.max(yp,0)), screenHeight).toString() + "px";
+        if(document.getElementById('loadCirc').style.visibility == "visible") {
+          document.getElementById('loadCirc').style.top = (-6 + Math.min((Math.max(yp, 0)), screenHeight)).toString() + "px";
+        }
+      }
+
+      function setX(coords) {
+        var screenWidth = window.innerWidth;
+        var xp = (screenWidth * coords.x) / (kWidth / 2)  ;
+        document.getElementById('cursor').style.left = Math.min((Math.max(xp,0)), screenWidth).toString() + "px";
+        if(document.getElementById('loadCirc').style.visibility == "visible"){
+          document.getElementById('loadCirc').style.left = (-6 + Math.min((Math.max(xp,0)), screenWidth)).toString() + "px" ;
+        }
+
+      }
+      function load(){
+        document.getElementById('loadCirc').style.visibility = "visible";
+      }
+      function unload(){
+        document.getElementById('loadCirc').style.visibility = "hidden";
+      }
+
+      var menuVisible = false;
+      function showMenu(){
+        if(!menuVisible){
+          button = document.getElementById('open-button');
+          var evnt = button["click"];
+          evnt.call(button);
+          menuVisible = true;
+        }
+      }
+      function hideMenu(){
+        if(menuVisible){
+          button = document.getElementById('close-button');
+          var evnt = button["click"];
+          evnt.call(button);
+          menuVisible = false;
+        }
+
+      }
+      socket.on('click', function(){
+        console.log("CLICKED!");
+      });
+      socket.on('kinect_pos', function(msg){
+
+        pos = JSON.parse(msg);
+        kWidth = iKWidth * (1/(pos.z/1000));
+        kHeight = ikHeight * (1/(pos.z/1000));
+        pos.y = -pos.y;
+        if(initPos){
+          pos.x -= initPos.x;
+          pos.y -= initPos.y;
+        }
+        else{
+          initPos.x = pos.x;
+          initPos.y = pos.y;
+        }
+
+
+
+        stabilizator = initStab;
+
+        if(lastPos) {
+          if(Math.abs(lastPos.x - pos.x) > stabilizator){
+            setX(pos);
+            pushX(pos.x);
+          }
+          if(Math.abs(lastPos.y - pos.y) > stabilizator ){
+            setY(pos);
+            pushY(pos.y);
+          }
+        }
+        lastPos = pos;
+        checkCollisions(lastPos);
+      });
+      socket.on('kinect_init_pos', function(msg){
+        initPos = JSON.parse(msg);
+        initPos.y = -initPos.y/2;
+        initPos.x = initPos.x/2;
+
+        var newPos = {'x': 0, 'y':0, 'z':0};
+        setX(newPos);
+        setY(newPos);
+      });
+    </script>
+
+
+    <script type="text/javascript">
+      var final_transcript = '';
+      var recognizing = false;
+      var witToken = "NCMMPEGNNKEMYXOFPK7ELRCGYBS4G56M";
+
+      if ('webkitSpeechRecognition' in window) {
+
+        var recognition = new webkitSpeechRecognition();
+
+        recognition.continuous = true;
+        recognition.interimResults = true;
+
+        recognition.onstart = function() {
+          recognizing = true;
+        };
+
+        recognition.onerror = function(event) {
+          console.log(event.error);
+        };
+
+        recognition.onend = function() {
+          recognizing = false;
+        };
+
+        recognition.onresult = function(event) {
+          var interim_transcript = '';
+          for (var i = event.resultIndex; i < event.results.length; ++i) {
+            if (event.results[i].isFinal) {
+              final_transcript += event.results[i][0].transcript;
+              $.ajax({
+                url: "https://api.wit.ai/message",
+                data: {
+                  "v":20160526,
+                  "q": final_transcript
+                },
+                type: "GET",
+                success: function(data, status) {
+                  var outcomes = data['outcomes'];
+                  for (var i = 0; i < outcomes.length; i++){
+                    var outcome = outcomes[i];
+                    var conf = outcome['confidence'];
+                    var intent = outcome['intent'];
+                    var entities = outcome['entities'];
+                    var keyEnts = Object.keys(entities);
+
+                    console.log(JSON.stringify(entities));
+                    setText(intent + " [" + conf.toString() + "] :" + " " + outcome['_text']);
+                    setText("\n" + JSON.stringify(keyEnts));
+                  }
+
+                },
+                beforeSend: function(xhr, settings) { xhr.setRequestHeader('Authorization','Bearer ' + witToken); }
+              });
+            } else {
+              interim_transcript += event.results[i][0].transcript;
+            }
+          }
+          final_transcript = capitalize(final_transcript);
+
+
+
+          final_span.innerHTML = linebreak(final_transcript);
+          interim_span.innerHTML = linebreak(interim_transcript);
+
+        };
+      }
+
+      var two_line = /\n\n/g;
+      var one_line = /\n/g;
+      function linebreak(s) {
+        return s.replace(two_line, '<p></p>').replace(one_line, '<br>');
+      }
+
+      function capitalize(s) {
+        return s.replace(s.substr(0,1), function(m) { return m.toUpperCase(); });
+      }
+
+      function startDictation(event) {
+        if (recognizing) {
+          recognition.stop();
+          return;
+        }
+        final_transcript = '';
+        recognition.lang = 'en-US';
+        recognition.start();
+        final_span.innerHTML = '';
+        interim_span.innerHTML = '';
+      }
+    </script>
+
+
+    <!--[if lt IE 9]>
+        <script type="text/javascript" src="js/html5shiv.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <!--PRELOADER-->
+    <div id="preloader">
+      <div id="status">
+        <img alt="logo" src="images/logo-big.png">
+      </div>
+    </div>
+    <!--/.PRELOADER END-->
+
+    <!--HEADER -->
+    <div class="header">
+      <div class="for-sticky">
+        <!--LOGO-->
+        <div class="col-md-2 col-xs-6 logo">
+        </div>
+        <!--/.LOGO END-->
+      </div>
+      <div class="menu-wrap" >
+        <nav class="menu">
+          <div class="menu-list">
+            <a data-scroll="" href="#home" class="active">
+              <span>Home</span>
+            </a>
+            <a data-scroll="" href="#about">
+              <span>About</span>
+            </a>
+            <a data-scroll="" href="#work">
+              <span>Work</span>
+            </a>
+             <a data-scroll="" href="#services">
+              <span>Services</span>
+            </a>
+            <a data-scroll="" href="#employement">
+              <span>Employement</span>
+            </a>
+            <a data-scroll="" href="#skill">
+              <span>Skills</span>
+            </a>
+            <a data-scroll="" href="#education">
+              <span>Education</span>
+            </a>
+            <a data-scroll="" href="#testimonial">
+              <span>Testimonial</span>
+            </a>
+            <a data-scroll="" href="#blog">
+              <span>Blog</span>
+            </a>
+            <a data-scroll="" href="#contact">
+              <span>Contact</span>
+            </a>
+          </div>
+        </nav>
+        <button  class="close-button" id="close-button">Close Menu</button>
+      </div>
+      <button  class="menu-button" id="open-button">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button><!--/.for-sticky-->
+    </div>
+    <!--/.HEADER END-->
+    
+    <!--CONTENT WRAP-->
+    <div class="content-wrap">
+      <!--CONTENT-->
+      <div class="content">
+        <!--HOME-->
+        <section id="home">
+          <div class="container">
+            <div class="row">
+              <div class="wrap-hero-content">
+                  <div class="hero-content">
+                    <h1>Hello</h1>
+                    <br>
+                    <span class="typed"></span>
+                    <div>
+                      <textarea id="output" style='width:400px;height:200px'></textarea>
+                    </div>
+                    <div>
+                      <button id="startbutton" class="clickableObjects" style="width:200px; height:50px" onclick="startDictation(event)">Start</button>
+                    </div>
+                    <div id="results">
+                      <span id="final_span" class="final"></span>
+                      <span id="interim_span" class="interim"></span>
+                    </div>
+                    <div id="charts">
+                      <div id="chartContainerX" style="height: 100px; width:100%;">
+                      </div>
+                      <div id="chartContainerY" style="height: 100px; width:100%;">
+                      </div>
+                    </div>
+
+                  </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!--/.HOME END-->
+
+        <img class="cursorClass" src="./images/cursor.png" id="cursor"/>
+        <img class="cursorClass" src="./images/loadingCirc.gif" id="loadCirc"/>
+
+
+        <!--FOOTER-->
+        <footer>
+          <div class="footer-bottom">
+            <div class="container">
+              <div class="row">
+                <a href="http://designscrazed.org/"><img src="images/logo-bottom.png" alt="crafted with love" class="center-block" /></a>
+			 </div>
+            </div>
+          </div>
+        </footer>
+        <!--/.FOOTER-END-->
+
+      <!--/.CONTENT END-->
+      </div>
+    <!--/.CONTENT-WRAP END-->
+    </div>
+    
+
+    <script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="js/jquery.appear.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="js/classie.js" type="text/javascript"></script>
+    <script src="js/owl.carousel.min.js" type="text/javascript"></script>
+    <script src="js/jquery.magnific-popup.min.js" type="text/javascript"></script>
+    <script src="js/masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="js/masonry.js" type="text/javascript"></script>
+    <script src="js/smooth-scroll.min.js" type="text/javascript"></script>
+    <script src="js/typed.js" type="text/javascript"></script>
+    <script src="js/main.js" type="text/javascript"></script>
+  </body>
+</html>

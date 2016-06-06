@@ -1,0 +1,28 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:08:41 GMT
+Content-Type: application/json
+Content-Length: 461
+Connection: keep-alive
+
+{
+  "msg_id" : "97d8f332-47ea-4cd2-a326-49caee925035",
+  "_text" : "question hey exercise authority this week",
+  "outcomes" : [ {
+    "_text" : "question hey exercise authority this week",
+    "confidence" : 0.424,
+    "intent" : "Query",
+    "entities" : {
+      "Medical_Fact" : [ {
+        "type" : "value",
+        "value" : "exercises"
+      } ],
+      "Time_Reference" : [ {
+        "type" : "value",
+        "value" : "this week"
+      } ]
+    }
+  } ]
+}

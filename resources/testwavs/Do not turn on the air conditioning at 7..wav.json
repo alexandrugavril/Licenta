@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:08:24 GMT
+Content-Type: application/json
+Content-Length: 264
+Connection: keep-alive
+
+{
+  "msg_id" : "d1bd1ac1-db66-4c53-a0da-f3d60d96aedc",
+  "_text" : "and do not have that information it's a",
+  "outcomes" : [ {
+    "_text" : "and do not have that information it's a",
+    "confidence" : 0.796,
+    "intent" : "Query",
+    "entities" : { }
+  } ]
+}

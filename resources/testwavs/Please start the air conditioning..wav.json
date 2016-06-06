@@ -1,0 +1,24 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:13:10 GMT
+Content-Type: application/json
+Content-Length: 325
+Connection: keep-alive
+
+{
+  "msg_id" : "f039504b-7408-46a9-aa29-0c3ebeb9825d",
+  "_text" : "is this about condition",
+  "outcomes" : [ {
+    "_text" : "is this about condition",
+    "confidence" : 0.523,
+    "intent" : "Query",
+    "entities" : {
+      "Time_Reference" : [ {
+        "type" : "value",
+        "value" : "now"
+      } ]
+    }
+  } ]
+}

@@ -1,0 +1,24 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:15:41 GMT
+Content-Type: application/json
+Content-Length: 368
+Connection: keep-alive
+
+{
+  "msg_id" : "f2080b47-aea4-42ab-bf90-c19168c9717d",
+  "_text" : "what was my last mission of the pressure",
+  "outcomes" : [ {
+    "_text" : "what was my last mission of the pressure",
+    "confidence" : 0.824,
+    "intent" : "Query",
+    "entities" : {
+      "Medical_Fact" : [ {
+        "type" : "value",
+        "value" : "blood pressure"
+      } ]
+    }
+  } ]
+}

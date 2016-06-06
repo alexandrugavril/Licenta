@@ -1,0 +1,26 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:14:03 GMT
+Content-Type: application/json
+Content-Length: 377
+Connection: keep-alive
+
+{
+  "msg_id" : "d415daf7-d247-433d-862f-45630927c8b8",
+  "_text" : "remind me to take my things of mine",
+  "outcomes" : [ {
+    "_text" : "remind me to take my things of mine",
+    "confidence" : 0.82,
+    "intent" : "Query",
+    "entities" : {
+      "Action" : [ {
+        "value" : "take"
+      } ],
+      "Medication" : [ {
+        "value" : "pills"
+      } ]
+    }
+  } ]
+}

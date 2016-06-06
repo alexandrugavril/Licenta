@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:10:13 GMT
+Content-Type: application/json
+Content-Length: 264
+Connection: keep-alive
+
+{
+  "msg_id" : "001ba11a-1e77-4f37-8432-a1d0bbc0f0b4",
+  "_text" : "how do i have just finishing the fifth",
+  "outcomes" : [ {
+    "_text" : "how do i have just finishing the fifth",
+    "confidence" : 0.473,
+    "intent" : "Command",
+    "entities" : { }
+  } ]
+}

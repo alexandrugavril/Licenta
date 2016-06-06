@@ -1,0 +1,26 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:16:12 GMT
+Content-Type: application/json
+Content-Length: 372
+Connection: keep-alive
+
+{
+  "msg_id" : "1d06c690-5e47-4c94-a56b-1ee987a81cea",
+  "_text" : "where should i take my kids next",
+  "outcomes" : [ {
+    "_text" : "where should i take my kids next",
+    "confidence" : 0.823,
+    "intent" : "Query",
+    "entities" : {
+      "Action" : [ {
+        "value" : "take"
+      } ],
+      "Medication" : [ {
+        "value" : "pills"
+      } ]
+    }
+  } ]
+}

@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:13:37 GMT
+Content-Type: application/json
+Content-Length: 254
+Connection: keep-alive
+
+{
+  "msg_id" : "8bc110ad-dbfb-4c81-bcc4-1c4804cbe9e3",
+  "_text" : "remind me to measure for a special",
+  "outcomes" : [ {
+    "_text" : "remind me to measure for a special",
+    "confidence" : 0.286,
+    "intent" : "Query",
+    "entities" : { }
+  } ]
+}

@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:13:49 GMT
+Content-Type: application/json
+Content-Length: 280
+Connection: keep-alive
+
+{
+  "msg_id" : "1db57d2a-e390-479c-ad48-b3ba490a012b",
+  "_text" : "remind me to measure my using that i worked out",
+  "outcomes" : [ {
+    "_text" : "remind me to measure my using that i worked out",
+    "confidence" : 0.818,
+    "intent" : "Query",
+    "entities" : { }
+  } ]
+}

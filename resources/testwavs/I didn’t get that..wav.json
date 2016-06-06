@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:09:36 GMT
+Content-Type: application/json
+Content-Length: 219
+Connection: keep-alive
+
+{
+  "msg_id" : "39a24c03-4b6c-42d0-aaae-fb6623227776",
+  "_text" : "i didn't get that",
+  "outcomes" : [ {
+    "_text" : "i didn't get that",
+    "confidence" : 0.305,
+    "intent" : "Data",
+    "entities" : { }
+  } ]
+}

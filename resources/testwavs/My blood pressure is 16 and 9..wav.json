@@ -1,0 +1,37 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:10:59 GMT
+Content-Type: application/json
+Content-Length: 637
+Connection: keep-alive
+
+{
+  "msg_id" : "ae2835c4-d571-44c7-b727-402111b795a4",
+  "_text" : "my blood pressure is sixteen and nine",
+  "outcomes" : [ {
+    "_text" : "my blood pressure is sixteen and nine",
+    "confidence" : 0.703,
+    "intent" : "Data",
+    "entities" : {
+      "Medical_Fact" : [ {
+        "type" : "value",
+        "value" : "blood pressure"
+      } ],
+      "Time_Reference" : [ {
+        "entities" : { },
+        "type" : "value",
+        "value" : "now"
+      } ],
+      "number" : [ {
+        "type" : "value",
+        "value" : 16
+      } ],
+      "secondary" : [ {
+        "type" : "value",
+        "value" : 9
+      } ]
+    }
+  } ]
+}

@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:16:19 GMT
+Content-Type: application/json
+Content-Length: 223
+Connection: keep-alive
+
+{
+  "msg_id" : "ea425a96-0d87-420f-8948-1456b6791896",
+  "_text" : "yes of course i did",
+  "outcomes" : [ {
+    "_text" : "yes of course i did",
+    "confidence" : 0.372,
+    "intent" : "Data",
+    "entities" : { }
+  } ]
+}

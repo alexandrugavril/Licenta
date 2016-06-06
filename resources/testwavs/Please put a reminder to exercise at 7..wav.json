@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:12:24 GMT
+Content-Type: application/json
+Content-Length: 264
+Connection: keep-alive
+
+{
+  "msg_id" : "9a64f11d-ca6d-478c-8fed-7c227f3e0b79",
+  "_text" : "i think he's got a mind to the size of",
+  "outcomes" : [ {
+    "_text" : "i think he's got a mind to the size of",
+    "confidence" : 0.397,
+    "intent" : "Command",
+    "entities" : { }
+  } ]
+}

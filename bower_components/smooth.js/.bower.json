@@ -1,0 +1,33 @@
+{
+  "name": "smooth.js",
+  "homepage": "https://github.com/osuushi/Smooth.js",
+  "authors": [
+    "yournamehere <someone@somewhere.com>"
+  ],
+  "description": "Smooth.js is an array interpolation library for Javascript",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "interpolation",
+    "javascript",
+    "smoothjs"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "5705874702",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "5705874702ea12a395444d6663fca589e19a4f8b"
+  },
+  "_source": "/home/alex/Workspace/MicrosoftSpeechRecognition/resources/scripts/Smooth.js",
+  "_target": "*",
+  "_originalSource": "./resources/scripts/Smooth.js/",
+  "_direct": true
+}

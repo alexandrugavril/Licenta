@@ -1,0 +1,24 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:14:41 GMT
+Content-Type: application/json
+Content-Length: 329
+Connection: keep-alive
+
+{
+  "msg_id" : "721a336f-4f80-44ef-8496-e2f8a18f5bd8",
+  "_text" : "six of them are playing this in",
+  "outcomes" : [ {
+    "_text" : "six of them are playing this in",
+    "confidence" : 0.636,
+    "intent" : "Query",
+    "entities" : {
+      "number" : [ {
+        "type" : "value",
+        "value" : 6
+      } ]
+    }
+  } ]
+}

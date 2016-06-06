@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:16:16 GMT
+Content-Type: application/json
+Content-Length: 202
+Connection: keep-alive
+
+{
+  "msg_id" : "f179acae-6982-424c-a336-3490bfc94209",
+  "_text" : "yes i do",
+  "outcomes" : [ {
+    "_text" : "yes i do",
+    "confidence" : 0.307,
+    "intent" : "Query",
+    "entities" : { }
+  } ]
+}

@@ -1,0 +1,26 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:07:45 GMT
+Content-Type: application/json
+Content-Length: 385
+Connection: keep-alive
+
+{
+  "msg_id" : "c8df4220-a05b-4e73-80e4-7a2c8cfb4eb6",
+  "_text" : "what did i take my medication to the",
+  "outcomes" : [ {
+    "_text" : "what did i take my medication to the",
+    "confidence" : 0.825,
+    "intent" : "Query",
+    "entities" : {
+      "Action" : [ {
+        "value" : "take"
+      } ],
+      "Medication" : [ {
+        "value" : "medication"
+      } ]
+    }
+  } ]
+}

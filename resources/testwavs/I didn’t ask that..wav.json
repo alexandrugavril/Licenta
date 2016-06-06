@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:09:32 GMT
+Content-Type: application/json
+Content-Length: 219
+Connection: keep-alive
+
+{
+  "msg_id" : "f4a69f20-bfeb-42ff-b69b-c9b8cb5d085b",
+  "_text" : "i didn't ask that",
+  "outcomes" : [ {
+    "_text" : "i didn't ask that",
+    "confidence" : 0.382,
+    "intent" : "Data",
+    "entities" : { }
+  } ]
+}

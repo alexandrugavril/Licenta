@@ -1,0 +1,23 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:15:36 GMT
+Content-Type: application/json
+Content-Length: 317
+Connection: keep-alive
+
+{
+  "msg_id" : "f82a3175-5d2d-4a2b-94c2-170e1ef9a4ed",
+  "_text" : "that's what was my head greatest",
+  "outcomes" : [ {
+    "_text" : "that's what was my head greatest",
+    "confidence" : 0.813,
+    "intent" : "Query",
+    "entities" : {
+      "Medical_Fact" : [ {
+        "value" : "pulse"
+      } ]
+    }
+  } ]
+}

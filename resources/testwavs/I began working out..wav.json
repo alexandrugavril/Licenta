@@ -1,0 +1,23 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:09:27 GMT
+Content-Type: application/json
+Content-Length: 275
+Connection: keep-alive
+
+{
+  "msg_id" : "2fcf3438-3100-4ced-8a36-0c19e23856fe",
+  "_text" : "begin working",
+  "outcomes" : [ {
+    "_text" : "begin working",
+    "confidence" : 0.373,
+    "intent" : "Data",
+    "entities" : {
+      "start_stop" : [ {
+        "value" : "stop"
+      } ]
+    }
+  } ]
+}

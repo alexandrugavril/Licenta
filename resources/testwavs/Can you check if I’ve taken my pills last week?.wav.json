@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:05:28 GMT
+Content-Type: application/json
+Content-Length: 284
+Connection: keep-alive
+
+{
+  "msg_id" : "3fbb55ec-7baf-47e3-87a5-7f54f80fd0d5",
+  "_text" : "can you check if i have the right beans last week",
+  "outcomes" : [ {
+    "_text" : "can you check if i have the right beans last week",
+    "confidence" : 0.771,
+    "intent" : "Query",
+    "entities" : { }
+  } ]
+}

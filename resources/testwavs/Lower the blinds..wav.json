@@ -1,0 +1,24 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:10:37 GMT
+Content-Type: application/json
+Content-Length: 300
+Connection: keep-alive
+
+{
+  "msg_id" : "84cfa5a0-223f-4495-91f4-43bdead42444",
+  "_text" : "no worries a life",
+  "outcomes" : [ {
+    "_text" : "no worries a life",
+    "confidence" : 0.363,
+    "intent" : "Data",
+    "entities" : {
+      "number" : [ {
+        "type" : "value",
+        "value" : 0
+      } ]
+    }
+  } ]
+}

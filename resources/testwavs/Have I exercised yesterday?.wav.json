@@ -1,0 +1,27 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:08:48 GMT
+Content-Type: application/json
+Content-Length: 386
+Connection: keep-alive
+
+{
+  "msg_id" : "472fe6df-95eb-4096-b678-27d01dbb3fa7",
+  "_text" : "who is this is this the",
+  "outcomes" : [ {
+    "_text" : "who is this is this the",
+    "confidence" : 0.813,
+    "intent" : "Query",
+    "entities" : {
+      "Time_Reference" : [ {
+        "type" : "value",
+        "value" : "now"
+      }, {
+        "type" : "value",
+        "value" : "now"
+      } ]
+    }
+  } ]
+}

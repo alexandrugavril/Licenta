@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:13:28 GMT
+Content-Type: application/json
+Content-Length: 236
+Connection: keep-alive
+
+{
+  "msg_id" : "44e845ef-8aa6-4350-9401-65ea35ac96fa",
+  "_text" : "please turn on the light",
+  "outcomes" : [ {
+    "_text" : "please turn on the light",
+    "confidence" : 0.683,
+    "intent" : "Command",
+    "entities" : { }
+  } ]
+}

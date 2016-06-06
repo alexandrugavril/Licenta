@@ -1,0 +1,23 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:13:02 GMT
+Content-Type: application/json
+Content-Length: 288
+Connection: keep-alive
+
+{
+  "msg_id" : "53a319fa-9bbf-4b85-8cbd-2790f8f1f447",
+  "_text" : "please say something",
+  "outcomes" : [ {
+    "_text" : "please say something",
+    "confidence" : 0.736,
+    "intent" : "Command",
+    "entities" : {
+      "Action" : [ {
+        "value" : "stop"
+      } ]
+    }
+  } ]
+}

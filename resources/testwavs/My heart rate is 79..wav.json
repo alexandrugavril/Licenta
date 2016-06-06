@@ -1,0 +1,28 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:11:31 GMT
+Content-Type: application/json
+Content-Length: 415
+Connection: keep-alive
+
+{
+  "msg_id" : "8f70bfd4-af12-4d80-a995-91c6f46f3050",
+  "_text" : "my heart rate is seventy nine",
+  "outcomes" : [ {
+    "_text" : "my heart rate is seventy nine",
+    "confidence" : 0.383,
+    "intent" : "Data",
+    "entities" : {
+      "Time_Reference" : [ {
+        "type" : "value",
+        "value" : "now"
+      } ],
+      "number" : [ {
+        "type" : "value",
+        "value" : 79
+      } ]
+    }
+  } ]
+}

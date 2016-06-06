@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:05:20 GMT
+Content-Type: application/json
+Content-Length: 254
+Connection: keep-alive
+
+{
+  "msg_id" : "97ef5c1e-c64f-4fed-8f44-3a8a61f5bad2",
+  "_text" : "what time should i mix the classes",
+  "outcomes" : [ {
+    "_text" : "what time should i mix the classes",
+    "confidence" : 0.815,
+    "intent" : "Query",
+    "entities" : { }
+  } ]
+}

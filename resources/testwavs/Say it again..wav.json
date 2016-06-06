@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:14:24 GMT
+Content-Type: application/json
+Content-Length: 210
+Connection: keep-alive
+
+{
+  "msg_id" : "843a2189-3d78-4b4d-a196-f049d9f9a963",
+  "_text" : "say it again",
+  "outcomes" : [ {
+    "_text" : "say it again",
+    "confidence" : 0.337,
+    "intent" : "Query",
+    "entities" : { }
+  } ]
+}

@@ -1,0 +1,27 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:09:46 GMT
+Content-Type: application/json
+Content-Length: 420
+Connection: keep-alive
+
+{
+  "msg_id" : "40eb3a7c-46f1-46fc-b74f-864401b11b9b",
+  "_text" : "i don't need to take my pills mine and most",
+  "outcomes" : [ {
+    "_text" : "i don't need to take my pills mine and most",
+    "confidence" : 0.787,
+    "intent" : "Query",
+    "entities" : {
+      "Medication" : [ {
+        "type" : "value",
+        "value" : "pills"
+      } ],
+      "Action" : [ {
+        "value" : "take"
+      } ]
+    }
+  } ]
+}

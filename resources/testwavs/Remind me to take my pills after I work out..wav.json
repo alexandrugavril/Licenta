@@ -1,0 +1,23 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:13:57 GMT
+Content-Type: application/json
+Content-Length: 318
+Connection: keep-alive
+
+{
+  "msg_id" : "dc23e666-2c32-4814-8da5-7756ef73b384",
+  "_text" : "remind me to take keys that i worked",
+  "outcomes" : [ {
+    "_text" : "remind me to take keys that i worked",
+    "confidence" : 0.821,
+    "intent" : "Query",
+    "entities" : {
+      "Action" : [ {
+        "value" : "take"
+      } ]
+    }
+  } ]
+}

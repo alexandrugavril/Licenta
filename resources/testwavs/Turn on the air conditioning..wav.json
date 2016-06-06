@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:15:12 GMT
+Content-Type: application/json
+Content-Length: 242
+Connection: keep-alive
+
+{
+  "msg_id" : "12e4d134-2487-4c9e-b38e-a6f293719c03",
+  "_text" : "turn on the air conditioning",
+  "outcomes" : [ {
+    "_text" : "turn on the air conditioning",
+    "confidence" : 0.406,
+    "intent" : "Query",
+    "entities" : { }
+  } ]
+}

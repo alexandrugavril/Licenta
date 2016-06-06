@@ -1,0 +1,24 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:14:47 GMT
+Content-Type: application/json
+Content-Length: 307
+Connection: keep-alive
+
+{
+  "msg_id" : "2f05364b-3d9b-4511-8c29-19fa6b9e4608",
+  "_text" : "this is stupid",
+  "outcomes" : [ {
+    "_text" : "this is stupid",
+    "confidence" : 0.435,
+    "intent" : "Query",
+    "entities" : {
+      "Time_Reference" : [ {
+        "type" : "value",
+        "value" : "now"
+      } ]
+    }
+  } ]
+}

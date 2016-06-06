@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:05:40 GMT
+Content-Type: application/json
+Content-Length: 272
+Connection: keep-alive
+
+{
+  "msg_id" : "4f758007-33fe-4615-a05a-7375278c39f6",
+  "_text" : "can you please the rose announces that will",
+  "outcomes" : [ {
+    "_text" : "can you please the rose announces that will",
+    "confidence" : 0.622,
+    "intent" : "Query",
+    "entities" : { }
+  } ]
+}

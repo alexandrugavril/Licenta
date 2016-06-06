@@ -1,0 +1,29 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:06:16 GMT
+Content-Type: application/json
+Content-Length: 459
+Connection: keep-alive
+
+{
+  "msg_id" : "6b70b0ab-734a-4fa5-b93a-685f40c7a77b",
+  "_text" : "is everything from seven to nine",
+  "outcomes" : [ {
+    "_text" : "is everything from seven to nine",
+    "confidence" : 0.346,
+    "intent" : "Command",
+    "entities" : {
+      "location" : [ {
+        "type" : "value",
+        "value" : "seven",
+        "suggested" : true
+      }, {
+        "type" : "value",
+        "value" : "nine",
+        "suggested" : true
+      } ]
+    }
+  } ]
+}

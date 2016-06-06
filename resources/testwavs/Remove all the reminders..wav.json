@@ -1,0 +1,30 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:14:14 GMT
+Content-Type: application/json
+Content-Length: 452
+Connection: keep-alive
+
+{
+  "msg_id" : "e6905ab3-788d-44a6-97da-0310a16ec511",
+  "_text" : "what is a memory that is",
+  "outcomes" : [ {
+    "_text" : "what is a memory that is",
+    "confidence" : 0.824,
+    "intent" : "Query",
+    "entities" : {
+      "Time_Reference" : [ {
+        "type" : "value",
+        "value" : "now"
+      }, {
+        "type" : "value",
+        "value" : "now"
+      } ],
+      "Medical_Fact" : [ {
+        "value" : "pulse"
+      } ]
+    }
+  } ]
+}

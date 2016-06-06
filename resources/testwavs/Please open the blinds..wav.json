@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:12:08 GMT
+Content-Type: application/json
+Content-Length: 232
+Connection: keep-alive
+
+{
+  "msg_id" : "f5916f3e-e7e7-4f5f-a88b-19b3341040fa",
+  "_text" : "please open the blinds",
+  "outcomes" : [ {
+    "_text" : "please open the blinds",
+    "confidence" : 0.714,
+    "intent" : "Command",
+    "entities" : { }
+  } ]
+}

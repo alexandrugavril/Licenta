@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:07:53 GMT
+Content-Type: application/json
+Content-Length: 232
+Connection: keep-alive
+
+{
+  "msg_id" : "ed72e5d0-530b-421c-a75f-307161628541",
+  "_text" : "do i have any goals for",
+  "outcomes" : [ {
+    "_text" : "do i have any goals for",
+    "confidence" : 0.325,
+    "intent" : "Query",
+    "entities" : { }
+  } ]
+}

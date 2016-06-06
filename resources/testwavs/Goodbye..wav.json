@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:08:33 GMT
+Content-Type: application/json
+Content-Length: 201
+Connection: keep-alive
+
+{
+  "msg_id" : "96e86811-fbb3-4a1b-9e0f-b0e166f42e1c",
+  "_text" : "good bye",
+  "outcomes" : [ {
+    "_text" : "good bye",
+    "confidence" : 0.278,
+    "intent" : "Data",
+    "entities" : { }
+  } ]
+}

@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:05:44 GMT
+Content-Type: application/json
+Content-Length: 224
+Connection: keep-alive
+
+{
+  "msg_id" : "61813b16-25f2-4691-8ef0-9e04965322b7",
+  "_text" : "can you repeat that",
+  "outcomes" : [ {
+    "_text" : "can you repeat that",
+    "confidence" : 0.637,
+    "intent" : "Query",
+    "entities" : { }
+  } ]
+}

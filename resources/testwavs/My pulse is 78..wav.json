@@ -1,0 +1,31 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:11:37 GMT
+Content-Type: application/json
+Content-Length: 469
+Connection: keep-alive
+
+{
+  "msg_id" : "36671a7e-6956-40f8-bb50-a85b63b0ecab",
+  "_text" : "reverse is seventy eight",
+  "outcomes" : [ {
+    "_text" : "reverse is seventy eight",
+    "confidence" : 0.365,
+    "intent" : "Data",
+    "entities" : {
+      "Time_Reference" : [ {
+        "type" : "value",
+        "value" : "now"
+      } ],
+      "number" : [ {
+        "type" : "value",
+        "value" : 78
+      } ],
+      "Medical_Fact" : [ {
+        "value" : "pulse"
+      } ]
+    }
+  } ]
+}

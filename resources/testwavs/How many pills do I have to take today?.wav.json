@@ -1,0 +1,27 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:09:22 GMT
+Content-Type: application/json
+Content-Length: 414
+Connection: keep-alive
+
+{
+  "msg_id" : "05b37854-01bb-4dd7-86e8-225698d533d8",
+  "_text" : "how many kids do i have today today",
+  "outcomes" : [ {
+    "_text" : "how many kids do i have today today",
+    "confidence" : 0.813,
+    "intent" : "Query",
+    "entities" : {
+      "Time_Reference" : [ {
+        "type" : "value",
+        "value" : "today"
+      }, {
+        "type" : "value",
+        "value" : "today"
+      } ]
+    }
+  } ]
+}

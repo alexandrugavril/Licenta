@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:08:55 GMT
+Content-Type: application/json
+Content-Length: 264
+Connection: keep-alive
+
+{
+  "msg_id" : "a270df4c-4736-4a90-abcd-27f39d15f1a7",
+  "_text" : "please help i received any calls today",
+  "outcomes" : [ {
+    "_text" : "please help i received any calls today",
+    "confidence" : 0.409,
+    "intent" : "Command",
+    "entities" : { }
+  } ]
+}

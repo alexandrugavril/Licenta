@@ -1,0 +1,25 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:09:17 GMT
+Content-Type: application/json
+Content-Length: 341
+Connection: keep-alive
+
+{
+  "msg_id" : "1ba58682-3d8d-4b09-8ae7-fddfd862a878",
+  "_text" : "how are you today",
+  "outcomes" : [ {
+    "_text" : "how are you today",
+    "confidence" : 0.577,
+    "intent" : "Query",
+    "entities" : {
+      "Time_Reference" : [ {
+        "entities" : { },
+        "type" : "value",
+        "value" : "today"
+      } ]
+    }
+  } ]
+}

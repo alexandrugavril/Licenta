@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:08:00 GMT
+Content-Type: application/json
+Content-Length: 272
+Connection: keep-alive
+
+{
+  "msg_id" : "597e166f-8b02-4121-b373-7917493e1c41",
+  "_text" : "hello do i have a decent set for a time to",
+  "outcomes" : [ {
+    "_text" : "hello do i have a decent set for a time to",
+    "confidence" : 0.429,
+    "intent" : "Command",
+    "entities" : { }
+  } ]
+}

@@ -1,0 +1,23 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:13:23 GMT
+Content-Type: application/json
+Content-Length: 300
+Connection: keep-alive
+
+{
+  "msg_id" : "2e6f4d4c-6a48-429c-9578-7cb66e2fdbc3",
+  "_text" : "please switch on the light",
+  "outcomes" : [ {
+    "_text" : "please switch on the light",
+    "confidence" : 0.766,
+    "intent" : "Command",
+    "entities" : {
+      "Action" : [ {
+        "value" : "stop"
+      } ]
+    }
+  } ]
+}

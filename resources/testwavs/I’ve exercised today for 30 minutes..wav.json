@@ -1,0 +1,28 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:09:59 GMT
+Content-Type: application/json
+Content-Length: 414
+Connection: keep-alive
+
+{
+  "msg_id" : "bea094c7-2262-4125-85bf-f6045902dbe5",
+  "_text" : "i have lexus es three for fifteen",
+  "outcomes" : [ {
+    "_text" : "i have lexus es three for fifteen",
+    "confidence" : 0.286,
+    "intent" : "Data",
+    "entities" : {
+      "number" : [ {
+        "type" : "value",
+        "value" : 3
+      } ],
+      "secondary" : [ {
+        "type" : "value",
+        "value" : 15
+      } ]
+    }
+  } ]
+}

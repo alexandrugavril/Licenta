@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:08:30 GMT
+Content-Type: application/json
+Content-Length: 244
+Connection: keep-alive
+
+{
+  "msg_id" : "7fc7cbbb-6d85-4386-9a50-633314084e06",
+  "_text" : "do you know what was mattel's",
+  "outcomes" : [ {
+    "_text" : "do you know what was mattel's",
+    "confidence" : 0.802,
+    "intent" : "Query",
+    "entities" : { }
+  } ]
+}

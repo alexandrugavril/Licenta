@@ -1,0 +1,25 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:10:17 GMT
+Content-Type: application/json
+Content-Length: 365
+Connection: keep-alive
+
+{
+  "msg_id" : "a145c5c4-b784-41be-8aa5-1d6f8aa5e071",
+  "_text" : "i have just the committee's",
+  "outcomes" : [ {
+    "_text" : "i have just the committee's",
+    "confidence" : 0.439,
+    "intent" : "Command",
+    "entities" : {
+      "location" : [ {
+        "type" : "value",
+        "value" : "committee's",
+        "suggested" : true
+      } ]
+    }
+  } ]
+}

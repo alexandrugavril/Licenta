@@ -1,0 +1,24 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:13:17 GMT
+Content-Type: application/json
+Content-Length: 322
+Connection: keep-alive
+
+{
+  "msg_id" : "34fce231-0348-41fb-ae94-0d06d8436d2d",
+  "_text" : "please stop the function",
+  "outcomes" : [ {
+    "_text" : "please stop the function",
+    "confidence" : 0.809,
+    "intent" : "Command",
+    "entities" : {
+      "Action" : [ {
+        "type" : "value",
+        "value" : "stop"
+      } ]
+    }
+  } ]
+}

@@ -1,0 +1,26 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:07:30 GMT
+Content-Type: application/json
+Content-Length: 380
+Connection: keep-alive
+
+{
+  "msg_id" : "cb7feb41-4e2a-4ca4-ac1d-acb92b8855fd",
+  "_text" : "did i forgot to take my place in the",
+  "outcomes" : [ {
+    "_text" : "did i forgot to take my place in the",
+    "confidence" : 0.823,
+    "intent" : "Query",
+    "entities" : {
+      "Medication" : [ {
+        "value" : "pills"
+      } ],
+      "Action" : [ {
+        "value" : "take"
+      } ]
+    }
+  } ]
+}

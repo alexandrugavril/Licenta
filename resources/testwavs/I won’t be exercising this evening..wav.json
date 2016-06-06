@@ -1,0 +1,24 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:10:33 GMT
+Content-Type: application/json
+Content-Length: 343
+Connection: keep-alive
+
+{
+  "msg_id" : "77ced6f0-dc73-4e3d-8b3f-32409eadaaa6",
+  "_text" : "that's it i won't be exercises",
+  "outcomes" : [ {
+    "_text" : "that's it i won't be exercises",
+    "confidence" : 0.602,
+    "intent" : "Query",
+    "entities" : {
+      "Medical_Fact" : [ {
+        "type" : "value",
+        "value" : "exercises"
+      } ]
+    }
+  } ]
+}

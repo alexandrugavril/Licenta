@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:15:30 GMT
+Content-Type: application/json
+Content-Length: 262
+Connection: keep-alive
+
+{
+  "msg_id" : "7d1ca475-5be2-462c-a328-e45be2321aa3",
+  "_text" : "what was the main reason the last week",
+  "outcomes" : [ {
+    "_text" : "what was the main reason the last week",
+    "confidence" : 0.817,
+    "intent" : "Query",
+    "entities" : { }
+  } ]
+}

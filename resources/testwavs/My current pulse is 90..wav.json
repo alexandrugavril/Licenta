@@ -1,0 +1,28 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:11:16 GMT
+Content-Type: application/json
+Content-Length: 409
+Connection: keep-alive
+
+{
+  "msg_id" : "1182ad48-4d15-4cb4-86e4-c9b0a4e8ebca",
+  "_text" : "my current ss is the",
+  "outcomes" : [ {
+    "_text" : "my current ss is the",
+    "confidence" : 0.498,
+    "intent" : "Data",
+    "entities" : {
+      "Time_Reference" : [ {
+        "entities" : { },
+        "type" : "value",
+        "value" : "current"
+      }, {
+        "type" : "value",
+        "value" : "now"
+      } ]
+    }
+  } ]
+}

@@ -1,0 +1,24 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:07:41 GMT
+Content-Type: application/json
+Content-Length: 327
+Connection: keep-alive
+
+{
+  "msg_id" : "6e2cf689-3693-45b9-a4d4-657a6b5bda0a",
+  "_text" : "is it sunny close to the",
+  "outcomes" : [ {
+    "_text" : "is it sunny close to the",
+    "confidence" : 0.435,
+    "intent" : "Query",
+    "entities" : {
+      "Time_Reference" : [ {
+        "type" : "value",
+        "value" : "now"
+      } ]
+    }
+  } ]
+}

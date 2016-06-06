@@ -1,0 +1,32 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:05:53 GMT
+Content-Type: application/json
+Content-Length: 557
+Connection: keep-alive
+
+{
+  "msg_id" : "4c551379-e2d6-494b-882f-8ff26d025b53",
+  "_text" : "can you tell me if i have taken my babies eight days ago",
+  "outcomes" : [ {
+    "_text" : "can you tell me if i have taken my babies eight days ago",
+    "confidence" : 0.819,
+    "intent" : "Query",
+    "entities" : {
+      "number" : [ {
+        "type" : "value",
+        "value" : 8
+      } ],
+      "Time_Reference" : [ {
+        "entities" : { },
+        "type" : "value",
+        "value" : "days ago"
+      } ],
+      "Action" : [ {
+        "value" : "take"
+      } ]
+    }
+  } ]
+}

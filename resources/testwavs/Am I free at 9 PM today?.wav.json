@@ -1,0 +1,24 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:05:12 GMT
+Content-Type: application/json
+Content-Length: 329
+Connection: keep-alive
+
+{
+  "msg_id" : "61e540dc-aa25-4633-8b46-f7c402a659fc",
+  "_text" : "hello is the apartment in",
+  "outcomes" : [ {
+    "_text" : "hello is the apartment in",
+    "confidence" : 0.589,
+    "intent" : "Query",
+    "entities" : {
+      "Time_Reference" : [ {
+        "type" : "value",
+        "value" : "now"
+      } ]
+    }
+  } ]
+}

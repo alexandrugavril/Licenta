@@ -1,0 +1,23 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:10:06 GMT
+Content-Type: application/json
+Content-Length: 326
+Connection: keep-alive
+
+{
+  "msg_id" : "fddb2ce4-3b36-4e56-b1cc-7135078239d5",
+  "_text" : "i have finished speaking be used in",
+  "outcomes" : [ {
+    "_text" : "i have finished speaking be used in",
+    "confidence" : 0.474,
+    "intent" : "Data",
+    "entities" : {
+      "Medical_Fact" : [ {
+        "value" : "exercises"
+      } ]
+    }
+  } ]
+}

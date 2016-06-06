@@ -1,0 +1,19 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:07:24 GMT
+Content-Type: application/json
+Content-Length: 239
+Connection: keep-alive
+
+{
+  "msg_id" : "be5e0d6a-6022-453a-8ac4-1d564a700611",
+  "_text" : "did i finish a session with",
+  "outcomes" : [ {
+    "_text" : "did i finish a session with",
+    "confidence" : 0.423,
+    "intent" : "Data",
+    "entities" : { }
+  } ]
+}

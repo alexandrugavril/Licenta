@@ -1,0 +1,28 @@
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Server: nginx/1.8.0
+Date: Fri, 06 May 2016 13:09:12 GMT
+Content-Type: application/json
+Content-Length: 454
+Connection: keep-alive
+
+{
+  "msg_id" : "72bb8c0f-02bb-4cf1-92ff-f60d35cd0345",
+  "_text" : "what is the fuck up have the meetings today",
+  "outcomes" : [ {
+    "_text" : "what is the fuck up have the meetings today",
+    "confidence" : 0.822,
+    "intent" : "Query",
+    "entities" : {
+      "Time_Reference" : [ {
+        "type" : "value",
+        "value" : "now"
+      }, {
+        "entities" : { },
+        "type" : "value",
+        "value" : "today"
+      } ]
+    }
+  } ]
+}
