@@ -159,7 +159,15 @@
 
   
   });
-  
+
+  function clearText() {
+    document.getElementById("output").value = "";
+  }
+
+  function setText(text) {
+    document.getElementById("output").value += text + "\n";
+    document.getElementById("output").scrollTop = document.getElementById("output").scrollHeight;
+  }
     
   //header
   function inits() {
@@ -174,6 +182,24 @@
                 classie.remove(header,"opacity-nav");
             }
           }
+      });
+
+
+      $('#askAmIForm').submit(function(e){
+        e.preventDefault();
+        setText($('#question').val());
+        var form = $('#askAmIForm');
+        var serialized = form.serialize();
+        $.ajax({
+          url:'/callWit',
+          type:'post',
+          data: serialized,
+          success:function(res){
+            console.log("DONE!");
+            setText(res);
+          }
+        });
+        form.children('input[type="text"]').val('');
       });
     }
 
