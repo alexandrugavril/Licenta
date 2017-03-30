@@ -18,26 +18,6 @@
     //active menu
     $(document).on("scroll", onScroll);
  
-    $('a[href^="#"]').on('click', function (e) {
-      e.preventDefault();
-      $(document).off("scroll");
- 
-      $('a').each(function () {
-        $(this).removeClass('active');
-      })
-      $(this).addClass('active');
- 
-      var target = this.hash;
-      $target = $(target);
-      $('html, body').stop().animate({
-        'scrollTop': $target.offset().top+2
-      }, 500, 'swing', function () {
-        window.location.hash = target;
-        $(document).on("scroll", onScroll);
-      });
-    });
-
-    
     //scroll js
     smoothScroll.init({
       selector: '[data-scroll]', // Selector for links (must be a valid CSS selector)
@@ -90,7 +70,7 @@
 
     //typed js
     $(".typed").typed({
-        strings: ["My name is AmI.", "If you need my help ...", "... just say \"AmI Listen\""],
+        strings: ["Hello!", "My name is AmI!", "How can I help you?"],
         typeSpeed: 25,
         backDelay: 900,
         // loop
@@ -168,7 +148,8 @@
     document.getElementById("output").value += text + "\n";
     document.getElementById("output").scrollTop = document.getElementById("output").scrollHeight;
   }
-    
+
+
   //header
   function inits() {
     window.addEventListener('scroll', function(e){

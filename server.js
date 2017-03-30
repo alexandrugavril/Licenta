@@ -3,7 +3,6 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var rules = require('./rules');
 require('sylvester');
-
 var OpenNI = require('./lib/node-openni/openni');
 var redis = require('redis');
 var client = redis.createClient();
@@ -27,11 +26,20 @@ var builder = require('botbuilder');
 var botUrl = "https://api.projectoxford.ai/luis/v1/application?id=9e9c32b0-4496-48b5-9a0b-0342511e3d4c&subscription-key=310de3dce0964707bbe019b877553fed";
 var dialog = new builder.LuisDialog(botUrl);
 var cortanaBot = new builder.TextBot();
+var db = require('./redisDb/redis.js');
 cortanaBot.add('/', dialog);
 
 
+var context;
+try {
+    context = OpenNI();
+}
+catch(e)
+{
+    console.log("Kinect not avaliable");
+    console.log(e);
+}
 
-var context = OpenNI();
 
 app.get('/', function(req, res){
     res.sendFile(__dirname + '/index.html');
@@ -45,10 +53,69 @@ app.post('/message', function(req, res){
 });
 
 app.post('/callWit', rules.callWit);
+app.post('/callWitString', rules.callWitWithString);
 app.get('/entities', rules.getEntities);
 app.get('/intents', rules.getIntents);
 
+app.post('/exercises', function(req,res) {
+    if (req.method === 'POST' && req.url === '/exercises') {
+        var text = '';
 
+        req.on('data', function(chunk) {
+            text += chunk;
+        });
+        req.on('end', function() {
+            qJson = qs.parse(text);
+
+            var data = new Date(+qJson.q);
+            console.log(data.toString());
+            db.getExercises(res, data, true);
+        });
+    } else {
+        res.writeHead(404);
+        res.end();
+    }
+});
+
+app.post('/medications', function(req,res){
+   if (req.method === 'POST' && req.url === '/medications'){
+       var text = '';
+
+       req.on('data', function(chunk) {
+           text += chunk;
+       });
+       req.on('end', function() {
+           qJson = qs.parse(text);
+
+           var data = new Date(+qJson.q);
+           console.log(data.toString());
+           db.getMedication(res, data, true);
+       });
+   } else {
+       res.writeHead(404);
+       res.end();
+   }
+});
+
+app.post('/heartrate', function(req,res) {
+    if (req.method === 'POST' && req.url === '/heartrate'){
+        var text = '';
+
+        req.on('data', function(chunk) {
+            text += chunk;
+        });
+        req.on('end', function() {
+            qJson = qs.parse(text);
+
+            var data = new Date(+qJson.q);
+            console.log(data.toString());
+            db.getHeartRate(res, data);
+        });
+    } else {
+        res.writeHead(404);
+        res.end();
+    }
+});
 
 
 io.on('connection', function(socket){
@@ -57,11 +124,37 @@ io.on('connection', function(socket){
     socket.on('disconnect', function(){
         console.log('user disconnected');
     });
+    socket.on('tracking', function(msg) {
+        console.log("TRACKING " + msg.toString());
+        if(msg)
+            if(!track)
+                startTracking();
+        else
+            if(track)
+                stopTracking();
+    });
 });
 
-io.on('speechSend', function(msg) {
-    console.log(JSON.stringify(msg));
-});
+
+
+var track = false;
+
+function startTracking() {
+    track = true;
+    console.log("STARTED TRACKING");
+    io.emit("tracking", true);
+}
+
+
+function stopTracking() {
+    track = false;
+    console.log("STOPPED TRACKING");
+    pointsTrackingArray = [];
+    io.emit("tracking", false);
+
+}
+
+
 
 var first = true;
 var initPos;
@@ -77,6 +170,34 @@ function isValid(initPos, pos, eps) {
     return true;
 }
 
+function shouldTrack(pointsVector) {
+
+    if(track == true){
+        return true;
+    }
+
+    maxDistX = 0;
+    maxDistY = 0;
+    console.log(pointsVector);
+    for(var i = 0; i < pointsVector.length - 1; i++){
+        p1 = pointsVector[i];
+        p2 = pointsVector[i+1];
+
+        if(Math.abs(p1[0] - p2[0]) > maxDistX) {
+            maxDistX = Math.abs(p1[0] - p2[0]);
+        }
+
+        if(Math.abs(p1[1] - p2[1]) > maxDistY) {
+            maxDistY = Math.abs(p1[1] - p2[1]);
+        }
+    }
+
+    if(track == false && maxDistX < 10 && maxDistY < 10){
+        startTracking();
+    }
+
+}
+
 var pointsArray = [];
 var smooth = require('chaikin-smooth');
 
@@ -89,88 +210,21 @@ var lastZ;
 
 
 var pointsTestSet = [];
-function generateTestSet(){
-    for(var i = 0; i < 1000; i++){
-        var r = Math.random();
-        if(r < 0.2)
-            pointsTestSet.push([10*i + 10*r, 0, 1000]);
-        else
-            pointsTestSet.push([10*i, 0, 1000]);
-        console.log(pointsTestSet[i][0] + ","+pointsTestSet[i][1] +"," + pointsTestSet[i][2]);
+var pointsTrackingArray = [];
+var trackTimer = -1;
 
-    }
-    console.log("__TEST__SET__")
-
-}
-
-function testPoints(){
-    generateTestSet();
-    for(var i = 0 ; i < pointsTestSet.length; i++){
-        pSet = pointsTestSet[i];
-        xK = pSet[0];
-        yK = pSet[1];
-        zK = pSet[2];
-        if(lastZ){
-            var dz = Math.abs(lastZ - zK);
-            if(dz > 40){
-                console.log("clicked!");
-            }
-        }
-        lastZ = zK;
-        pointsArray.push([xK, yK]);
-        if (pointsArray.length == 10) {
-            pointsArray.shift();
-            if (useSmooth == 1) {
-                var smoothedPath = smooth(pointsArray);
-                var newPos = smoothedPath[smoothedPath.length / 2];
-                var pos = {'x': Math.round(newPos[0]), 'y': Math.round(newPos[1]), 'z': Math.round(zK)};
-                if (first) {
-                    initPos = pos;
-                    console.log(pos);
-                    first = false;
-                }
-                else {
-                    io.emit('kinect_pos', JSON.stringify(pos));
-                }
-            }
-            else if (useSmooth == 2) {
-                var dataConstantKalmanX = pointsArray.map(function (v) {
-                    return kalmanFilterX.filter(v[0]);
-                });
-                var dataConstantKalmanY = pointsArray.map(function (v) {
-                    return kalmanFilterY.filter(v[1]);
-                });
-                var newList = [];
-                for (var i = 0; i < dataConstantKalmanX.length; i++) {
-                    newList.push([dataConstantKalmanX[i], dataConstantKalmanY[i]]);
-                }
-                var sPath = smooth(newList);
-                sPath = smooth(sPath);
-                var newPos = sPath[sPath.length / 2];
-                var pos = {'x': newPos[0], 'y': newPos[1], 'z': Math.round(zK)};
-                if (first) {
-                    initPos = pos;
-                    console.log(pos);
-                    first = false;
-                }
-                else {
-                    console.log(pos);
-
-
-                }
-            }
-        }
-    }
-
-}
-
+var oldPos;
 [
     "right_hand",
-    "left_fingertip",
-    "right_fingertip"
 ].forEach(function(joint) {
-
+    if(context)
     context.on(joint, function(userId, xK, yK, zK) {
+        if(trackTimer != -1){
+            clearTimeout(trackTimer);
+        }
+        trackTimer = setTimeout(function(){
+            stopTracking();
+        }, 1000);
         if(joint == 'right_hand') {
             if(lastZ){
                 var dz = Math.abs(lastZ - zK);
@@ -179,9 +233,14 @@ function testPoints(){
             }
             lastZ = zK;
             pointsArray.push([xK, yK]);
+            pointsTrackingArray.push([xK, yK]);
 
             if (pointsArray.length == 10) {
                 pointsArray.shift();
+                if(pointsTrackingArray.length == 20){
+                    shouldTrack(pointsTrackingArray);
+                    pointsTrackingArray.shift();
+                }
                 if (useSmooth == 1) {
                     var smoothedPath = smooth(pointsArray);
                     var newPos = smoothedPath[smoothedPath.length/2];
@@ -207,24 +266,42 @@ function testPoints(){
                         return kalmanFilterY.filter(v[1]);
                     });
                     var newList = [];
+                    xSum = 0;
+                    ySum = 0;
                     for (var i = 0; i < dataConstantKalmanX.length; i++) {
                         newList.push([dataConstantKalmanX[i], dataConstantKalmanY[i]]);
+                        xSum += dataConstantKalmanX[i];
+                        ySum += dataConstantKalmanY[i];
                     }
+
                     var sPath = smooth(newList);
-                    sPath = smooth(sPath);
-                    var newPos = sPath[sPath.length / 2];
+
+                    for(var qstep = 0; qstep < 10; qstep++){
+                        sPath = smooth(sPath);
+                    }
+
                     var kPos = pointsArray[4];
+                    newPos = [xSum / dataConstantKalmanX.length, ySum / dataConstantKalmanY.length];
+                    var kalmanPos = [dataConstantKalmanX[4], dataConstantKalmanY[4]];
+
                     str = kPos[0] + "," + kPos[1] +',';
+                    str += kalmanPos[0] + "," + kalmanPos[1] + ",";
                     var pos = {'x': newPos[0], 'y': newPos[1], 'z': Math.round(zK)};
                     if (first) {
-                        initPos = pos;
-                        io.emit('kinect_init_pos', JSON.stringify(pos));
-                        first = false;
-                        str += pos.x + "," + pos.y + "," + pos.z;
+                        if(track){
+                            initPos = pos;
+                            io.emit('kinect_init_pos', JSON.stringify(pos));
+                            first = false;
+                            str += pos.x + "," + pos.y + "," + pos.z;
+                        }
                     }
                     else {
-                        io.emit('kinect_pos', JSON.stringify(pos));
-                        str += pos.x + "," + pos.y + "," + pos.z;
+                        if(track){
+                            io.emit('kinect_pos', JSON.stringify(pos));
+                            str += pos.x + "," + pos.y;
+                            console.log(str);
+                        }
+
                     }
                 }
             }
@@ -236,21 +313,6 @@ function testPoints(){
     });
 
 
-});
-[
-    'newuser',
-    'userexit',
-    'lostuser',
-    'posedetected',
-    'calibrationstart',
-    'calibrationsucceed',
-    'calibrationfail',
-    'click',
-    'wave'
-].forEach(function(eventType) {
-    context.on(eventType, function(userId) {
-        console.log('User %d emitted event: %s', userId, eventType);
-    });
 });
 
 

@@ -1,6 +1,11 @@
 
+.clickableObjects{
+    width:150px; height:150px;
+}
+
 #cursor{
     width: 50px;
+    z-index: 9999;
     height: 50px;
     position: absolute;
 }

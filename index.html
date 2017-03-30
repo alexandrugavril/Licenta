@@ -22,243 +22,300 @@
     <!--fonts google-->
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="js/speech.1.0.0.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" href="/js/jquery.fancybox.css" type="text/css" media="screen" />
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-
-    <script src="js/jquery-1.9.1.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="js/jquery-ui-draggable-collision.js"></script>
-    <script src="js/jquery-collision.min.js"></script>
     <script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/0.5.6/dist/progressbar.js"></script>
-    <script src="js/knob.js">
-    </script>
-    <script>$(".dial").knob({
-      'min':-50,
-      'max':50
-    });</script>
-
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+    <script src="js/sounds.js"></script>
+    <script type="text/javascript" src="/js/jquery.fancybox.js"></script>
     <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
     <script type="text/javascript" src="./js/canvasjs.min.js"></script>
-    <script type="text/javascript">
-      var client;
-      var request;
+    <script src="js/Chart.js"></script>
+    <script src="js/Chart.bundle.js"></script>
+    <script type="text/javascript" src="/js/jquery.fancybox.pack.js"></script>
+    <script type="text/javascript" src="/js/testWit.js">
 
-      function useMic() {
-        return true;
-      }
-
-      function getMode() {
-        return Microsoft.ProjectOxford.SpeechRecognition.SpeechRecognitionMode.longDictation;
-      }
-
-      function getOxfordKey() {
-        return "c3cece936e95450eb95b7d18dd371bf9";
-      }
-
-      function getSecondaryOxfordKey() {
-        return "ab61d10498274872bd6c493bebdf153d";
-      }
-
-      function getLanguage() {
-        return "en-us";
-      }
-
-      function getLuisConfig() {
-        var appid = "9e9c32b0-4496-48b5-9a0b-0342511e3d4c";
-        var subid = "310de3dce0964707bbe019b877553fed";
-        console.log("Called");
-
-        if (appid.length > 0 && subid.length > 0) {
-          console.log("LUIS?");
-          return { appid: appid, subid: subid };
-        }
-
-        return null;
-      }
-
-      function startTests() {
-        /*if (luisCfg) {
-          client = Microsoft.ProjectOxford.SpeechRecognition.SpeechRecognitionServiceFactory.createDataClientWithIntent(
-                  getLanguage(),
-                  getOxfordKey(),
-                  getSecondaryOxfordKey(),
-                  luisCfg.appid,
-                  luisCfg.subid);
-        } else {
-          client = Microsoft.ProjectOxford.SpeechRecognition.SpeechRecognitionServiceFactory.createDataClient(
-                  mode,
-                  getLanguage(),
-                  getOxfordKey(),
-                  getSecondaryOxfordKey());
-        }
-        request = new XMLHttpRequest();
-        request.open(
-                'GET',
-                (mode == Microsoft.ProjectOxford.SpeechRecognition.SpeechRecognitionMode.shortPhrase) ? "whatstheweatherlike.wav" : "batman.wav",
-                true);
-        request.responseType = 'arraybuffer';
-        request.onload = function () {
-          if (request.status !== 200) {
-            setText("unable to receive audio file");
-          } else {
-            client.sendAudio(request.response, request.response.length);
-          }
-        };
-
-        request.send();*/
-        fs.readdir();
-      }
-
-      function start() {
-        var mode = getMode();
-        var luisCfg = getLuisConfig();
-
-        clearText();
-
-        if (useMic()) {
-          if (luisCfg) {
-            client = Microsoft.ProjectOxford.SpeechRecognition.SpeechRecognitionServiceFactory.createMicrophoneClientWithIntent(
-                    getLanguage(),
-                    getOxfordKey(),
-                    getSecondaryOxfordKey(),
-                    luisCfg.appid,
-                    luisCfg.subid);
-          } else {
-            client = Microsoft.ProjectOxford.SpeechRecognition.SpeechRecognitionServiceFactory.createMicrophoneClient(
-                    mode,
-                    getLanguage(),
-                    getOxfordKey(),
-                    getSecondaryOxfordKey());
-          }
-          client.startMicAndRecognition();
-          console.log("Started?");
-          setTimeout(function () {
-            console.log("Ended?");
-            client.endMicAndRecognition();
-          }, 5000);
-        } else {
-          if (luisCfg) {
-            client = Microsoft.ProjectOxford.SpeechRecognition.SpeechRecognitionServiceFactory.createDataClientWithIntent(
-                    getLanguage(),
-                    getOxfordKey(),
-                    getSecondaryOxfordKey(),
-                    luisCfg.appid,
-                    luisCfg.subid);
-          } else {
-            client = Microsoft.ProjectOxford.SpeechRecognition.SpeechRecognitionServiceFactory.createDataClient(
-                    mode,
-                    getLanguage(),
-                    getOxfordKey(),
-                    getSecondaryOxfordKey());
-          }
-          request = new XMLHttpRequest();
-          request.open(
-                  'GET',
-                  (mode == Microsoft.ProjectOxford.SpeechRecognition.SpeechRecognitionMode.shortPhrase) ? "whatstheweatherlike.wav" : "batman.wav",
-                  true);
-          request.responseType = 'arraybuffer';
-          request.onload = function () {
-            if (request.status !== 200) {
-              setText("unable to receive audio file");
-            } else {
-              client.sendAudio(request.response, request.response.length);
-            }
-          };
-
-          request.send();
-        }
-
-        client.onPartialResponseReceived = function (response) {
-          console.log(response);
-          setText(response);
-        };
-
-        client.onFinalResponseReceived = function (response) {
-          console.log(response);
-
-
-
-          $.ajax({
-            contentType: "application/json; charset=utf-8",
-            data: JSON.stringify(response),
-            dataType: 'json',
-            processData: false,
-            type: 'POST',
-            url: '/message'
-          }).done(function(data) {
-            console.log(data);
-          });
-
-
-
-          console.log("EMMITED");
-        };
-
-        client.onIntentReceived = function (response) {
-          console.log(response);
-          var json = JSON.parse(response);
-          var intents = json['intents'];
-          var bestIntent = intents[0];
-          setText("#" + bestIntent['intent']);setText(': '); setText(json['query']);
-
-
-          socket.emit ('speechSend', response);
-          console.log("EMMITED");
-        };
-      }
     </script>
     <script type="text/javascript">
+
+    </script>
+    <script type="text/javascript">
+
+      var $= jQuery.noConflict();
       var dpsX = [];
       var dpsY = [];
-      var chartX, chartY;
-      $('document').ready(function () {
-        chartX = new CanvasJS.Chart("chartContainerX",{
-          title :{
-            text: "X Coord"
-          },
-          data: [{
-            type: "line",
-            dataPoints: dpsX
-          }]
-        });
-        chartY = new CanvasJS.Chart("chartContainerY",{
-          title :{
-            text: "Y Coord"
-          },
-          data: [{
-            type: "line",
-            dataPoints: dpsY
-          }]
-        });
-      });
 
-      function pushX (point) {
-        dpsX.push({
-          y: point,
-          x: $.now()
-        });
-        var dataLength = 200;
-        if (dpsX.length > dataLength)
-        {
-          dpsX.shift();
+      function addMedicationsChart(results){
+        console.log(results);
+        var data = [];
+        if(results.length === 0){
+          return;
         }
-        chartX.render();
-      };
-      function pushY (point) {
-        dpsY.push({
-          y: point,
-          x: $.now()
-        });
-        var dataLength = 200;
-        if (dpsY.length > dataLength)
-        {
-          dpsY.shift();
+        startDate = results[0].date;
+        allData = [];
+        labels = [];
+        for(var i = 0; i < results.length; i++){
+          //cDate = new Date(results[i].date);
+          console.log(results[i].date);
+          sDate = new Date(results[i].date);
+          if(typeof(results[i].count) !== 'undefined') {
+            labels.push(sDate.toString());
+            allData.push(results[i].count);
+          }
+          else{
+            labels.push(sDate.toString());
+            allData.push(0);
+          }
+          /*
+           if(+startDate >= +cDate){
+           startDate = cDate;
+           }*/
         }
-        chartY.render();
-      };
+        bgrd = [];
+        for (var i = 0 ; i < allData.length; i++){
+          bgrd.push(getRandColor());
+        }
+        newData = [{
+          data: allData,
+          backgroundColor: bgrd,
+          label: "Medication"
+        }];
+        var data = {
+          labels: labels,
+          datasets: newData
+        };
+
+        var ctx = document.getElementById("exercise-chart").getContext("2d");
+        var myChart = new Chart(ctx, {
+          type:'bar',
+          data:data,
+          options: {
+            // Elements options apply to all of the options unless overridden in a dataset
+            // In this case, we are setting the border of each bar to be 2px wide and green
+            elements: {
+              rectangle: {
+                borderWidth: 2,
+                borderColor: 'rgb(0, 255, 0)',
+                borderSkipped: 'bottom'
+              }
+            },
+            responsive: true,
+            legend: {
+              position: 'top',
+            },
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero:true
+                }
+              }]
+            }
+          }
+        });
+      }
+
+      function addHeartRateChart(results){
+        console.log(results);
+        var data = [];
+        if(results.length === 0){
+          return;
+        }
+        startDate = results[0].date;
+        allData = [];
+        labels = [];
+        for(var i = 0; i < results.length; i++){
+          //cDate = new Date(results[i].date);
+          console.log(results[i].date);
+          sDate = new Date(results[i].date);
+          if(typeof(results[i].values) !== 'undefined' && results[i].values.length > 0) {
+            labels.push(sDate.toString());
+            allData.push(results[i].values[0]);
+          }
+          else{
+            labels.push(sDate.toString());
+            allData.push(0);
+          }
+          /*
+           if(+startDate >= +cDate){
+           startDate = cDate;
+           }*/
+        }
+        bgrd = [];
+        for (var i = 0 ; i < allData.length; i++){
+          bgrd.push(getRandColor());
+        }
+        newData = [{
+          data: allData,
+          backgroundColor: bgrd,
+          label: "Heart Rate"
+        }];
+        var data = {
+          labels: labels,
+          datasets: newData
+        };
+
+        var ctx = document.getElementById("exercise-chart").getContext("2d");
+        var myChart = new Chart(ctx, {
+          type:'bar',
+          data:data,
+          options: {
+            // Elements options apply to all of the options unless overridden in a dataset
+            // In this case, we are setting the border of each bar to be 2px wide and green
+            elements: {
+              rectangle: {
+                borderWidth: 2,
+                borderColor: 'rgb(0, 255, 0)',
+                borderSkipped: 'bottom'
+              }
+            },
+            responsive: true,
+            legend: {
+              position: 'top',
+            },
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero:true
+                }
+              }]
+            }
+          }
+        });
+      }
+
+      var timer;
+      var testIndex = 0;
+
+
+      function testWit(idx){
+
+        cData = testsQueries[idx];
+        $.ajax({
+          url:'/callWitString',
+          type:'post',
+          data: JSON.stringify(cData),
+          success:function(res){
+            console.log(cData.Cnt + ":" + res.toString());
+            testIndex++;
+            if(testIndex >= testsQueries.length){
+              testIndex = 0;
+              return;
+            }
+            else{
+              setTimeout(testWit(testIndex), 1000);
+
+            }
+
+          }
+        });
+      }
+      function getRandColor(){
+        return "rgba(" + Math.round(Math.random() * 255) +"," +  Math.round(Math.random() * 255) + "," + Math.round( Math.random()*255) + "," + "1)";
+      }
+      var myChart;
+      function addExercisesChart(results) {
+        console.log(results);
+        var data = [];
+        if(results.length === 0){
+          return;
+        }
+        startDate = results[0].date;
+        allData = [];
+        labels = [];
+        for(var i = 0; i < results.length; i++){
+          //cDate = new Date(results[i].date);
+          console.log(results[i].date);
+          sDate = new Date(results[i].date);
+          eDate = new Date(results[i].date);
+          eDate.setSeconds(eDate.getSeconds() + results[i].duration);
+          console.log(sDate);
+          console.log(eDate);
+          data.push({x: sDate, y:i});
+          data.push({x: eDate, y:i});
+          labels.push(sDate.toString());
+          allData.push(results[i].duration);
+          /*
+          if(+startDate >= +cDate){
+            startDate = cDate;
+          }*/
+          data = [];
+        }
+        bgrd = [];
+        for (var i = 0 ; i < allData.length; i++){
+          bgrd.push(getRandColor());
+        }
+        newData = [{
+          data: allData,
+          backgroundColor:bgrd,
+          label: "Exercises"
+        }];
+        var data = {
+          labels: labels,
+          datasets: newData
+        };
+
+        var ctx = document.getElementById("exercise-chart").getContext("2d");
+        myChart = new Chart(ctx, {
+          type:'bar',
+          data:data,
+          options: {
+            // Elements options apply to all of the options unless overridden in a dataset
+            // In this case, we are setting the border of each bar to be 2px wide and green
+            elements: {
+              rectangle: {
+                borderWidth: 2,
+                borderColor: 'rgb(255, 0, 0)',
+                borderSkipped: 'bottom'
+              }
+            },
+            responsive: true,
+            legend: {
+              position: 'top',
+            },
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero:true
+                }
+              }]
+            }
+          }
+        });
+      }
+
+      function showNewChart() {
+        var ctx = document.getElementById("chart");
+        myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+            datasets: [{
+              label: '# of Votes',
+              data: [12, 19, 3, 5, 2, 3],
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+              ],
+              borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+              ],
+            }]
+          }
+        });
+      }
 
       // generates first set of dataPoints
     </script>
@@ -266,6 +323,68 @@
       /**
        * Created by alex on 4/28/16.
        */
+      function showExercises(date){
+        $.ajax({
+          url:'/exercises',
+          type:'post',
+          data: 'q=' + encodeURIComponent(date.toString()),
+          success:function(res){
+            addExercisesChart(res);
+
+          }
+        });
+        showChart();
+      }
+
+      function showMedication(date){
+        $.ajax({
+          url:'/medications',
+          type:'post',
+          data: 'q=' + encodeURIComponent(date.toString()),
+          success:function(res){
+            addMedicationsChart(res);
+          }
+        });
+        showChart();
+      }
+
+      function showHeartRate(date){
+        $.ajax({
+          url:'/heartrate',
+          type:'post',
+          data: 'q=' + encodeURIComponent(date.toString()),
+          success:function(res){
+            addHeartRateChart(res);
+          }
+        });
+        showChart();
+      }
+
+      var chartVisible = false;
+      function showChart(){
+        $.fancybox(
+          { href : '#exercise-chart',
+          onClose: function () {
+            chartVisible = false;
+            if(myChart){
+              console.log("DESTROY!");
+              myChart.destroy();
+            }
+          }}
+        );
+        chartVisible = true;
+      }
+
+      function hideChart(){
+        $.fn.fancybox.close();
+        chartVisible = false;
+      }
+
+      function openWindow(h, w, url) {
+        leftOffset = (screen.width/2) - w/2;
+        topOffset = (screen.height/2) - h/2;
+        window.open(url, this.target, 'left=' + leftOffset + ',top=' + topOffset + ',width=' + w + ',height=' + h + ',resizable,scrollbars=yes');
+      }
 
       function getPositions(box) {
         var $box = $(box);
@@ -293,19 +412,18 @@
           console.log("MATCHED BOX 0 !");
           return;
         }
+        console.log("CLICK IF COMPARE!");
         var pos = getPositions(matchedBox);
         var evnt = matchedBox["onclick"];
         var pos2 = getPositions($("#cursor"));
         if(comparePositions(pos2,pos)){
           if (typeof(evnt) == "function") {
-            console.log("CLICKED!");
             evnt.call(matchedBox);
           }
         }
         var index = matchedItems.indexOf(matchedBox);
         if(index > -1){
           matchedItems.splice(index, 1);
-          console.log("REMOVED BOX");
           unload();
         }
         matchedBox = 0;
@@ -316,7 +434,6 @@
         var objs = $(".clickableObjects");
         var pos2 = getPositions($("#cursor"));
         if( Math.abs(pos2[0] - window.innerWidth) < 400 ){
-          console.log("SHOWING MENU!");
           showMenu();
         }
         else{
@@ -451,24 +568,52 @@
         if(lastPos) {
           if(Math.abs(lastPos.x - pos.x) > stabilizator){
             setX(pos);
-            pushX(pos.x);
           }
           if(Math.abs(lastPos.y - pos.y) > stabilizator ){
             setY(pos);
-            pushY(pos.y);
+          }
+          if(Math.abs(lastPos.y - pos.y) > stabilizator || Math.abs(lastPos.x - pos.x) > stabilizator){
+            console.log(JSON.parse(msg).x + "," + JSON.parse(msg).y + "," + pos.x + "," + pos.y);
+          }
+          else{
+            console.log(JSON.parse(msg).x + "," + JSON.parse(msg).y + "," + lastPos.x + "," + lastPos.y);
           }
         }
         lastPos = pos;
         checkCollisions(lastPos);
       });
+      var track = false;
+      function startTracking(){
+        socket.emit('tracking', true);
+        console.log("TRACKING START");
+      }
+
+      function stopTracking(){
+        console.log("TRACKING STOP" );
+        if(chartVisible){
+          console.log("HIDING CHART");
+          hideChart();
+        }
+        else
+          socket.emit('tracking', false);
+      }
+
       socket.on('kinect_init_pos', function(msg){
         initPos = JSON.parse(msg);
         initPos.y = -initPos.y/2;
         initPos.x = initPos.x/2;
 
-        var newPos = {'x': 0, 'y':0, 'z':0};
-        setX(newPos);
-        setY(newPos);
+
+      });
+      socket.on('tracking', function(msg) {
+        if(msg == true && track == false){
+          playStart();
+          track = true;
+        }
+        if(msg == false && track == true){
+          playDone();
+          track = false;
+        }
       });
     </script>
 
@@ -486,14 +631,17 @@
         recognition.interimResults = true;
 
         recognition.onstart = function() {
+          playStart();
           recognizing = true;
         };
 
         recognition.onerror = function(event) {
+          playError();
           console.log(event.error);
         };
 
         recognition.onend = function() {
+          playDone();
           recognizing = false;
         };
 
@@ -598,43 +746,27 @@
       <div class="for-sticky">
         <!--LOGO-->
         <div class="col-md-2 col-xs-6 logo">
+          <button class="clickableObjects" style="
+              background-image: url('./images/stop.png');
+              background-repeat: no-repeat;
+              background-size: 100%;
+              background-color: whitesmoke;
+              position: relative;
+              top:80px;
+              left:10px;
+              z-index: 998"
+                  onclick="stopTracking()"></button>
         </div>
         <!--/.LOGO END-->
       </div>
       <div class="menu-wrap" >
         <nav class="menu">
           <div class="menu-list">
-            <a data-scroll="" href="#home" class="active">
-              <span>Home</span>
-            </a>
-            <a data-scroll="" href="#about">
-              <span>About</span>
-            </a>
-            <a data-scroll="" href="#work">
-              <span>Work</span>
-            </a>
-             <a data-scroll="" href="#services">
-              <span>Services</span>
-            </a>
-            <a data-scroll="" href="#employement">
-              <span>Employement</span>
-            </a>
-            <a data-scroll="" href="#skill">
-              <span>Skills</span>
-            </a>
-            <a data-scroll="" href="#education">
-              <span>Education</span>
-            </a>
-            <a data-scroll="" href="#testimonial">
-              <span>Testimonial</span>
-            </a>
-            <a data-scroll="" href="#blog">
-              <span>Blog</span>
-            </a>
-            <a data-scroll="" href="#contact">
-              <span>Contact</span>
-            </a>
+            <input id="showFitness" type="image" src="images/exercises.png" class="clickableObjects" onclick="showExercises(Date.now())"/>
+            <input id="showMeds" class="clickableObjects" type="image" src="images/meds.png" onclick="showMedication(Date.now())"/>
+            <input id="showHeartRate" class="clickableObjects" type="image" src="images/health.png" onclick="showHeartRate(Date.now())"/>
           </div>
+
         </nav>
         <button  class="close-button" id="close-button">Close Menu</button>
       </div>
@@ -656,30 +788,29 @@
             <div class="row">
               <div class="wrap-hero-content">
                   <div class="hero-content">
-                    <h1>Hello</h1>
+
                     <br>
                     <span class="typed"></span>
                     <div>
                       <textarea id="output" style='width:400px;height:200px'></textarea>
                     </div>
                     <div>
-                      <button id="startbutton" class="clickableObjects" style="width:150px; height:150px" onclick="startDictation(event)">Start</button>
+                      <input id="startbutton" class="clickableObjects" type="image" src="images/sr.png" onclick="startDictation(event)"></input>
                     </div>
                     <div>
                       <br>
                       <form id="askAmIForm">
                         <input id="question" name="q" style="width: 300px" type="text" /> <input type="submit" value="Ask AmI"/>
+
                       </form>
+
                     </div>
                     <div id="results">
                       <span id="final_span" class="final"></span>
                       <span id="interim_span" class="interim"></span>
                     </div>
-                    <div id="charts">
-                      <div  id="chartContainerX" style="height: 100px; width:100%;visibility: hidden">
-                      </div>
-                      <div  id="chartContainerY" style="height: 100px; width:100%;visibility: hidden">
-                      </div>
+                    <div style="display:none" id="charts">
+                      <canvas id="exercise-chart" width="1024" height="800"></canvas>
                     </div>
 
                   </div>
@@ -715,7 +846,6 @@
     </div>
     
 
-    <script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
     <script src="js/jquery.appear.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
     <script src="js/classie.js" type="text/javascript"></script>
